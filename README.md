@@ -7,3 +7,9 @@ K R Nandakishore
 Rayani Venkat Sai Rithvik
 
 -----------------
+
+Acknowledgements:
+- We thank Dr. Zafar Ali Khan and the course TAs for their constant support and guidance throughout the course and project
+- Komaragiri Sai Pranav for his participation to create a sample test case
+
+-----------------
