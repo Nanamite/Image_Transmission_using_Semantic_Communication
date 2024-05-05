@@ -19,3 +19,8 @@ Rayani Venkat Sai Rithvik
 -----------------
 
 For testing over the dataset, make use of `test.py`.
+
+file descriptions:
+
+- main.py: the main pipeline. Reads an image (change path within code), crops the RoI, transmits it, reconstruct by placing the crop on background.
+- 
