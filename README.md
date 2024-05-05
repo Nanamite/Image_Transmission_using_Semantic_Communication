@@ -17,3 +17,5 @@ Rayani Venkat Sai Rithvik
   - Kartik Agrawal
 
 -----------------
+
+For testing over the dataset, make use of `test.py`.
