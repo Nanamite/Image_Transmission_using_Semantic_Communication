@@ -4,9 +4,10 @@ def MSE(img1, img2):
     img1 = np.array(img1, np.int32)
     img2 = np.array(img2, np.int32)
     mse_loss = np.mean(np.square(img1 - img2))
+    nmse_loss = np.mean(np.square(img1 - img2)/(np.square(img1) + 1e-10))
     psnr = 10*np.log10((255**2)/mse_loss)
 
-    return mse_loss, psnr
+    return mse_loss, nmse_loss, psnr
 
 def pad(img, window_size):
     pad_size = window_size//2
@@ -71,3 +72,10 @@ def SSIM(img1, img2):
     mssim = np.mean(ssim_map)
 
     return ssim_map, mssim
+
+if __name__ == '__main__':
+    arr1 = np.array([[1, 1, 1], [2, 2, 2], [3, 3, 3]])
+    arr2 = np.array([[2, 2, 2], [3, 3, 3], [4, 4, 4]])
+
+    mse, nmse, psnr = MSE(arr1, arr2)
+    print(mse, nmse, psnr)

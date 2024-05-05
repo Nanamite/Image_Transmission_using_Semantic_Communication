@@ -1,0 +1,66 @@
+0.png:
+---------
+MSE loss: 327.94652557373047
+NMSE loss: 0.1949211529918437
+PSNR: 22.9727732673414
+MSSIM: 0.7774063539595201
+bits for full image: 2097152
+bits sent: 800
+bits saved: 2096352, 99.962%
+---------
+1.png:
+---------
+MSE loss: 124.42605972290039
+NMSE loss: 0.022410905302510983
+PSNR: 27.181690125983383
+MSSIM: 0.8567346586646704
+bits for full image: 2097152
+bits sent: 934400
+bits saved: 1162752, 55.444%
+---------
+2.png:
+---------
+MSE loss: 344.2067451477051
+NMSE loss: 0.04635027983167646
+PSNR: 22.762609842670564
+MSSIM: 0.8170069251031893
+bits for full image: 2097152
+bits sent: 643104
+bits saved: 1454048, 69.334%
+---------
+3.png:
+---------
+MSE loss: 0.054931640625
+NMSE loss: 3.4057685302870396e-06
+PSNR: 60.732577907243225
+MSSIM: 0.999997121452537
+bits for full image: 2097152
+bits sent: 2097152
+bits saved: 0, 0.000%
+---------
+4.png:
+---------
+MSE loss: 165.51397323608398
+NMSE loss: 0.04928400650517169
+PSNR: 25.94245696634378
+MSSIM: 0.7858037219385099
+bits for full image: 2097152
+bits sent: 131928
+bits saved: 1965224, 93.709%
+---------
+5.png:
+---------
+MSE loss: 0.052219390869140625
+NMSE loss: 3.396162257358239e-06
+PSNR: 60.952485593272485
+MSSIM: 0.9999972797309713
+bits for full image: 2097152
+bits sent: 2097152
+bits saved: 0, 0.000%
+---------
+AVG MSE loss: 160.3667424519857
+AVG NMSE loss: 0.05216219109366508
+AVG PSNR: 36.75743228380914
+AVG MSSIM: 0.8728243434748997
+AVG bits saved: 53.075%
+---------

@@ -37,19 +37,28 @@ def tx_rx(section, coords, snr= 5, K= 1):
     w_received = int(w_bin_received, 2)
     h_received = int(h_bin_received, 2)
 
-    section_received = np.zeros((h_received, w_received), dtype= np.uint8)
+    if w_received == 0:
+        w_received = 512
+    if h_received == 0:
+        h_received = 512
+
+    section_received = np.zeros((h_received*w_received), dtype= np.uint8)
     # print(section_flat.shape, section_received.shape)
 
     bit_num = 0
     for i in range(0, len(section_bin_received), 8):
+        # print(bit_num, i, len(section_bin_received), h_received*w_received, w*h, h_bin_received, h_bin, w_bin_received, w_bin)
+        # print('yea1')
         bits = section_bin_received[i:i + 8]
-        section_received[bit_num//w_received, bit_num%w_received] = int(bits, 2)
+        # section_received[bit_num//w_received, bit_num%w_received] = int(bits, 2)
+        section_received[bit_num] = int(bits, 2)
         bit_num += 1
+        # print('yea2')
 
     # print(np.reshape(section, -1) == section_received)
     # print((section == section_received).all())
 
-    #section_received = np.reshape(section_received, (h_received, w_received))
+    section_received = np.reshape(section_received, (h_received, w_received))
 
     return section_received, x_received, y_received
 
@@ -58,8 +67,8 @@ if __name__ == '__main__':
     coords = [10, 20, 3, 3]
 
     section_received, x, y, = tx_rx(section, coords)
-    print(section_received)
-    print(x, y)
+    # print(section_received)
+    # print(x, y)
 
 
     

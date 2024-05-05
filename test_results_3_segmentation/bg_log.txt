@@ -1,0 +1,31 @@
+Average statistics over all backgrounds:
+-------------------
+# of persons = 1:
+AVG MSE loss: 408.0155944824219
+AVG NMSE loss: 0.9847412705421448
+AVG PSNR: 46.5057258605957
+AVG MSSIM: 0.860949695110321
+AVG bits saved: 39.510%
+-------------------
+# of persons = 2:
+AVG MSE loss: 1118.6461181640625
+AVG NMSE loss: 6.313260555267334
+AVG PSNR: 33.7198600769043
+AVG MSSIM: 0.7577864527702332
+AVG bits saved: 58.115%
+-------------------
+# of persons = 3:
+AVG MSE loss: 1031.92578125
+AVG NMSE loss: 4.437418460845947
+AVG PSNR: 30.716156005859375
+AVG MSSIM: 0.734208345413208
+AVG bits saved: 65.620%
+-------------------
+Net Average:
+-------------------
+AVG MSE loss: 852.8624877929688
+AVG NMSE loss: 3.91180682182312
+AVG PSNR: 36.9805793762207
+AVG MSSIM: 0.7843148112297058
+AVG bits saved: 54.415%
+-------------------
