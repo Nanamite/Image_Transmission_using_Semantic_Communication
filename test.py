@@ -13,6 +13,8 @@ people_dir = os.path.join(root, 'people')
 #change save_dir to a save directory of your choice
 save_dir = 'test_results_3_segmentation'
 semantic_segment = True
+snr = 10
+K = 32
 
 num_backgrounds = len(os.listdir(background_dir))
 
@@ -74,7 +76,7 @@ for background in os.listdir(background_dir):
             # cv.imshow('', img)
             # cv.waitKey(0)
 
-            bg_section_placed, section_sent, section_received, bits_img, bits_sent, bits_saved = main(img, bg_img, save= False, num_filter= 256, semantic_segment= semantic_segment)
+            bg_section_placed, section_sent, section_received, bits_img, bits_sent, bits_saved = main(img, bg_img, save= False, num_filter= 256, semantic_segment= semantic_segment, snr= snr, K= K)
 
             cv.imwrite(os.path.join(img_save_dir, 'reconstruction.png'), bg_section_placed)
             cv.imwrite(os.path.join(img_save_dir, 'section_sent.png'), section_sent)
