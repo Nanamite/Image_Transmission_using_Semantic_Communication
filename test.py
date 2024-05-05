@@ -3,13 +3,19 @@ import os
 from ssim import *
 import cv2 as cv
 
+#setting up dataset paths
 root = 'data'
 background_dir = os.path.join(root, 'background')
 people_dir = os.path.join(root, 'people')
 
+#save and method (to get RoI) option
+#toggle semantic_segment to False to use object detection method
+#change save_dir to a save directory of your choice
 save_dir = 'test_results_3_segmentation'
-num_backgrounds = len(os.listdir(background_dir))
 semantic_segment = True
+
+num_backgrounds = len(os.listdir(background_dir))
+
 
 avg_bg_mse = np.array([0, 0, 0], dtype= np.float32)
 avg_bg_nmse = np.array([0, 0, 0], dtype= np.float32)
