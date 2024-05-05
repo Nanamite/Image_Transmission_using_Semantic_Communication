@@ -4,7 +4,7 @@ from transmit_receive import *
 from ssim import *
 import os
 
-def main(img, background, save_dir= 'results', save= True, num_filter= 128, semantic_segment = True):
+def main(img, background, save_dir= 'results', save= True, num_filter= 128, semantic_segment = True, snr= 10, K= 32):
     #Taking images to be of size 500 x 500
     #coords need 10 bits
     person_segment, coords = crop(img, num_filter, semantic_segment)
@@ -13,7 +13,7 @@ def main(img, background, save_dir= 'results', save= True, num_filter= 128, sema
     # cv.imshow('', person_segment)
     # cv.waitKey(0)
 
-    section_received, x_received, y_received = tx_rx(person_segment, coords, snr= 10, K= 32)
+    section_received, x_received, y_received = tx_rx(person_segment, coords, snr= snr, K= K)
 
     bits_img = img.shape[0]*img.shape[1]*8
     bits_sent = person_segment.shape[0]*person_segment.shape[1]*8
