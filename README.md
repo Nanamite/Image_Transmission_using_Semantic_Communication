@@ -10,8 +10,10 @@ Rayani Venkat Sai Rithvik
 
 ## Acknowledgements:
 - We thank Dr. Zafar Ali Khan and the course TAs for their constant support and guidance throughout the course and project
-- Thanks to
-  - h
-
+- For the creation of the dataset, thanks to
+  - Komaragiri Sai Pranav
+  - A P Vaideeswaran
+  - Harishankar M
+  - Kartik Agrawal
 
 -----------------
