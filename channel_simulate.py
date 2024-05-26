@@ -34,13 +34,6 @@ def channel_sim(bitstream, snr= 5, K = 100):
 
         # append the decoded message to the list
         decoded_chunks.append(myPC.message_received)
-        # if i*100/num_chunks % 10 < 1e-3:
-        #print(i*100/num_chunks, ' %') if (i % 100 == 0) else None
-        # percentage = i*100/num_chunks
-        # percentage_int = (i*100)//num_chunks
-
-        # if abs(percentage - percentage_int) < 0.002:
-        #     print(f'{percentage_int} %')
 
     decoded_chunks = np.array(decoded_chunks)
     output_array = ''

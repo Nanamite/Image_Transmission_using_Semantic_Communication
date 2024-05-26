@@ -273,7 +273,7 @@ class Darknet(torch.nn.Module):
     def get_module_list(self):
         return self.module_list
 
-    def forward(self, x, CUDA):
+    def forward(self, x, CUDA= True if torch.cuda.is_available() else False):
         detections = []
         modules = self.blocks[1:]
         outputs = {}   # We cache the outputs for the route layer

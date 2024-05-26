@@ -11,7 +11,7 @@ people_dir = os.path.join(root, 'people')
 #save and method (to get RoI) option
 #toggle semantic_segment to False to use object detection method
 #change save_dir to a save directory of your choice
-save_dir = 'test_results_3_segmentation'
+save_dir = 'test'
 semantic_segment = True
 snr = 10
 K = 32

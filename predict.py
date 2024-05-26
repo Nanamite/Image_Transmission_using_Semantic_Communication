@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2 as cv
 import argparse
+from profile_pytorch import profile
 
 def colorize(label_map):
     colormap = [
@@ -61,6 +62,8 @@ def predict_map(img, num_filters= 128):
 
     model = MobileV3Large.from_pretrained(num_filters= num_filters).cuda().eval()
 
+    num_ops, num_params = profile(model, (1, img.shape[2], img.shape[0], img.shape[1]))
+
     if img.shape[0] < 400 or img.shape[1] < 400:
         small_dim = np.argmin([img.shape[0], img.shape[1]])
         ratio = 400/img.shape[small_dim]
@@ -78,7 +81,7 @@ def predict_map(img, num_filters= 128):
     # plt.imshow(colored)
     # plt.show()
 
-    return label_map, colored
+    return label_map, colored, num_ops, num_params
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -89,6 +92,6 @@ if __name__ == '__main__':
     img = cv.imread(args.img_path)
     img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
 
-    label_map, colored = predict_map(img)
+    label_map, colored, _, _ = predict_map(img)
 
     cv.imwrite(args.save_path, label_map)

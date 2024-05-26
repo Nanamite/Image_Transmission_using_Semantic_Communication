@@ -3,12 +3,13 @@ from PIL import Image
 from predict import *
 from yolo.detect_object import predict_crop
 
+#crops the RoI based on either semantic segmentation method or Object Detection Method
 def crop(img, num_filter= 128, semantic_segment= True):
     #img is an ndarray
     print('extracting person')
     if semantic_segment:
         print('using semantic segmentation')
-        label_map, _ = predict_map(img, num_filter)
+        label_map, _, num_ops, num_params = predict_map(img, num_filter)
         person_class = 11
 
         crop = np.copy(img)
@@ -35,12 +36,13 @@ def crop(img, num_filter= 128, semantic_segment= True):
             h = y_max - y_min
     else:
         print('using object detection')
-        crop, [x_min, y_min, w, h] = predict_crop(img)
+        crop, [x_min, y_min, w, h], num_ops, num_params = predict_crop(img)
         x_max = x_min + w
         y_max = y_min + h
 
     print('extraction done')
 
+    #fallback option
     if x_max <= x_min:
         x_max = x_min
         y_max = y_min
@@ -50,7 +52,7 @@ def crop(img, num_filter= 128, semantic_segment= True):
         w = 0
         h = 0
 
-    return crop[:, :, 0], [x_min, y_min, w, h]
+    return crop[:, :, 0], [x_min, y_min, w, h], num_ops, num_params
 
 
 if __name__ == '__main__':

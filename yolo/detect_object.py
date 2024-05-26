@@ -1,7 +1,6 @@
 import argparse
 from collections import Counter
 import os
-import pickle as pkl
 
 import cv2 as cv
 import torch
@@ -10,6 +9,7 @@ from yolo.darknet import Darknet
 from yolo.preprocess import prep_image
 
 import numpy as np
+from profile_pytorch import profile
 
 
 ROOT_DIR = os.getcwd()
@@ -52,6 +52,8 @@ def predict_crop(img):
 
     model.eval()
 
+    num_ops, num_params = profile(model, (1, img.shape[2], img.shape[0], img.shape[1]))
+
     img, orig_im, dim = prep_image(img, inp_dim)
     im_dim = torch.FloatTensor(dim).repeat(1,2)
 
@@ -75,10 +77,6 @@ def predict_crop(img):
     print("Class counts: " + str(class_counter))
 
     tot_objects = output_dummy.size(0)
-    # tot_objs_str = f"Total objects detected: {tot_objects}"
-    # print(tot_objs_str)
-
-    # colors = pkl.load(open("pallete", "rb"))
 
     im_dim = im_dim.repeat(tot_objects, 1)
     scaling_factor = torch.min(inp_dim/im_dim, 1)[0].view(-1, 1)
@@ -95,16 +93,6 @@ def predict_crop(img):
         output_dummy[i, [2, 4]] = torch.clamp(output_dummy[i, [2, 4]], 0.0, im_dim[i, 1])
 
     output_dummy = output_dummy.numpy()
-
-    # list(map(lambda x: draw_object_labels(x, orig_im, classes), output_dummy))
-    # cv.putText(orig_im, tot_objs_str, (5, 30), cv.FONT_HERSHEY_SIMPLEX, 1, [255, 255, 255], 1,
-    #     cv.LINE_AA
-    # )
-
-
-
-    # name = os.path.join('./output', 'test_output.jpg')
-    # cv.imwrite(name, orig_im)
 
     x_max = 0
     x_min = orig_im.shape[1]
@@ -130,7 +118,7 @@ def predict_crop(img):
     h = y_max - y_min
 
     crop = orig_im[y_min:y_max, x_min:x_max]
-    return crop, [x_min, y_min, w, h]
+    return crop, [x_min, y_min, w, h], num_ops, num_params
 
 
 if __name__ == '__main__':

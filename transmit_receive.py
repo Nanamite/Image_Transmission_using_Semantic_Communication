@@ -1,6 +1,7 @@
 import numpy as np
 from channel_simulate import *
 
+#Simulates the transmission and receiving of the bitstream as well as reconstruction
 def tx_rx(section, coords, snr= 5, K= 1):
     x = coords[0]
     y = coords[1]
