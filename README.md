@@ -14,3 +14,7 @@ Thanks to and acknowledging
   -   A P Vaideeswaran
   -   Harishankar M
   -   Kartik Agrawal
+    
+------------------
+<bold>NOTE:<\bold>
+Download pretrained yolo weights from \url{https://pjreddie.com/media/files/yolov3.weights} and place it in the folder yolo
