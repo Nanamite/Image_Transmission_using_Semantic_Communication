@@ -16,6 +16,6 @@ Thanks to and acknowledging
   -   Kartik Agrawal
     
 ------------------
-<bold>NOTE:<\bold>
+<b>NOTE:</b>
 
 Download pretrained yolo weights from ```https://pjreddie.com/media/files/yolov3.weights``` and place it in the folder yolo
